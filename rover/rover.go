@@ -10,18 +10,23 @@ func NewRover(x, y int, direction string) *Rover {
 	return &Rover{x, y, direction}
 }
 
+func (r *Rover) facingEast(instruction string) {
+	if instruction == "F" {
+		r.x++
+	} else if instruction == "B" {
+		r.x--
+	} else if instruction == "R" {
+		r.facing = "S"
+	} else if instruction == "L" {
+		r.facing = "N"
+	}
+
+}
+
 func (r *Rover) Execute(instructionList string) {
 	switch r.facing {
 	case "E":
-		if instructionList == "F" {
-			r.x++
-		} else if instructionList == "B" {
-			r.x--
-		} else if instructionList == "R" {
-			r.facing = "S"
-		} else if instructionList == "L" {
-			r.facing = "N"
-		}
+		r.facingEast(instructionList)
 	case "S":
 		if instructionList == "F" {
 			r.y--
