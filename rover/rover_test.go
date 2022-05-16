@@ -106,3 +106,9 @@ func TestRoverDirectionTurnLeftFacingWest(t *testing.T) {
 	rover.Execute("L")
 	assert.Equal(t, &Rover{1, 1, "S"}, rover)
 }
+
+func TestRoverPosDirectionTurnLeftMoveForward(t *testing.T) {
+	rover := NewRover(1, 1, "N")
+	rover.Execute("LF")
+	assert.Equal(t, &Rover{0, 1, "W"}, rover)
+}
