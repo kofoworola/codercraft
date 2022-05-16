@@ -20,6 +20,18 @@ func (r *Rover) facingEast(instruction string) {
 	} else if instruction == "L" {
 		r.facing = "N"
 	}
+}
+
+func (r *Rover) facingSouth(instruction string) {
+	if instruction == "F" {
+		r.y--
+	} else if instruction == "B" {
+		r.y++
+	} else if instruction == "R" {
+		r.facing = "W"
+	} else if instruction == "L" {
+		r.facing = "E"
+	}
 
 }
 
@@ -28,15 +40,7 @@ func (r *Rover) Execute(instructionList string) {
 	case "E":
 		r.facingEast(instructionList)
 	case "S":
-		if instructionList == "F" {
-			r.y--
-		} else if instructionList == "B" {
-			r.y++
-		} else if instructionList == "R" {
-			r.facing = "W"
-		} else if instructionList == "L" {
-			r.facing = "E"
-		}
+		r.facingSouth(instructionList)
 	case "N":
 		if instructionList == "F" {
 			r.y++
